@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D57D544D1C20D01600394258 /* memeTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57D544C1C20D01600394258 /* memeTextFieldDelegate.swift */; };
 		D5CB2B651C1F892700636E81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CB2B641C1F892700636E81 /* AppDelegate.swift */; };
 		D5CB2B671C1F892700636E81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CB2B661C1F892700636E81 /* ViewController.swift */; };
 		D5CB2B6A1C1F892700636E81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5CB2B681C1F892700636E81 /* Main.storyboard */; };
@@ -14,6 +15,7 @@
 		D5CB2B6F1C1F892700636E81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5CB2B6D1C1F892700636E81 /* LaunchScreen.storyboard */; };
 		D5CB2B7A1C1F892700636E81 /* ImagePickerExperiementsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CB2B791C1F892700636E81 /* ImagePickerExperiementsTests.swift */; };
 		D5CB2B851C1F892700636E81 /* ImagePickerExperiementsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CB2B841C1F892700636E81 /* ImagePickerExperiementsUITests.swift */; };
+		D5EF82291C2A139700676C7D /* memeDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF82281C2A139700676C7D /* memeDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D57D544C1C20D01600394258 /* memeTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = memeTextFieldDelegate.swift; sourceTree = "<group>"; };
 		D5CB2B611C1F892700636E81 /* ImagePickerExperiements.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImagePickerExperiements.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5CB2B641C1F892700636E81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5CB2B661C1F892700636E81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +50,7 @@
 		D5CB2B801C1F892700636E81 /* ImagePickerExperiementsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImagePickerExperiementsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5CB2B841C1F892700636E81 /* ImagePickerExperiementsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerExperiementsUITests.swift; sourceTree = "<group>"; };
 		D5CB2B861C1F892700636E81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5EF82281C2A139700676C7D /* memeDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = memeDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D57D544B1C20D00600394258 /* TextField Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				D57D544C1C20D01600394258 /* memeTextFieldDelegate.swift */,
+			);
+			name = "TextField Delegate";
+			sourceTree = "<group>";
+		};
 		D5CB2B581C1F892700636E81 = {
 			isa = PBXGroup;
 			children = (
@@ -97,8 +109,10 @@
 		D5CB2B631C1F892700636E81 /* ImagePickerExperiements */ = {
 			isa = PBXGroup;
 			children = (
+				D57D544B1C20D00600394258 /* TextField Delegate */,
 				D5CB2B641C1F892700636E81 /* AppDelegate.swift */,
 				D5CB2B661C1F892700636E81 /* ViewController.swift */,
+				D5EF82281C2A139700676C7D /* memeDataModel.swift */,
 				D5CB2B681C1F892700636E81 /* Main.storyboard */,
 				D5CB2B6B1C1F892700636E81 /* Assets.xcassets */,
 				D5CB2B6D1C1F892700636E81 /* LaunchScreen.storyboard */,
@@ -193,6 +207,7 @@
 				TargetAttributes = {
 					D5CB2B601C1F892700636E81 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 679ME73ZU2;
 					};
 					D5CB2B741C1F892700636E81 = {
 						CreatedOnToolsVersion = 7.2;
@@ -257,6 +272,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5CB2B671C1F892700636E81 /* ViewController.swift in Sources */,
+				D5EF82291C2A139700676C7D /* memeDataModel.swift in Sources */,
+				D57D544D1C20D01600394258 /* memeTextFieldDelegate.swift in Sources */,
 				D5CB2B651C1F892700636E81 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,10 +414,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ImagePickerExperiements/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.echovectortechnologies.ImagePickerExperiements;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -408,10 +429,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ImagePickerExperiements/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.echovectortechnologies.ImagePickerExperiements;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -482,6 +507,7 @@
 				D5CB2B8B1C1F892700636E81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D5CB2B8C1C1F892700636E81 /* Build configuration list for PBXNativeTarget "ImagePickerExperiementsTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +516,7 @@
 				D5CB2B8E1C1F892700636E81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D5CB2B8F1C1F892700636E81 /* Build configuration list for PBXNativeTarget "ImagePickerExperiementsUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +525,7 @@
 				D5CB2B911C1F892700636E81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
