@@ -23,6 +23,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     let topFieldDelegate = memeTextFieldDelegate()
     let bottomFieldDelegate = memeTextFieldDelegate()
     var keyboardAlreadyShowing = false
+    var bottomTextFieldEditing = false
     
     //Font For Memes
     let memeTextAttributes = [
@@ -30,13 +31,22 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         NSForegroundColorAttributeName: UIColor.whiteColor(),
         NSStrokeColorAttributeName: UIColor.blackColor(),
         NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        
     ]
+    
+    //sets delegates, aligns and capitalizes all text in textFields, and hides navigation bar.
     override func viewDidLoad() {
         topTextField.defaultTextAttributes = memeTextAttributes
         bottomTextField.defaultTextAttributes = memeTextAttributes
+        
         topTextField.textAlignment = NSTextAlignment.Center
         bottomTextField.textAlignment = NSTextAlignment.Center
+        
+        
+        topTextField.adjustsFontSizeToFitWidth = true
+        topTextField.minimumFontSize = 0.2
+        bottomTextField.adjustsFontSizeToFitWidth = true
+        bottomTextField.minimumFontSize = 0.2
+
         
         topTextField.autocapitalizationType = UITextAutocapitalizationType.AllCharacters
         bottomTextField.autocapitalizationType = UITextAutocapitalizationType.AllCharacters
@@ -45,16 +55,21 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
     
     
+    //function toggles whether the bottomtextfield is being edited. This variable makes it so the view only
+    @IBAction func bottomTextFieldBeganEditing(sender: UITextField) {
+        bottomTextFieldEditing = true
+    }
+    
+    
     override func viewWillAppear(animated: Bool) {
+        //sets the type of fill in the imageView. This can be done in the storyboard or in code.
         imagePickerView.contentMode = UIViewContentMode.ScaleAspectFill
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         
+        //assigns the delegates to the previously set delegates. Each textfield needs to have its own delegate so that they act indepently.
         self.topTextField.delegate = topFieldDelegate
         self.bottomTextField.delegate = bottomFieldDelegate
         subscribeToKeyboardNotifications()
-        
-        
-        
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -62,7 +77,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         unsubscribeFromKeyboardNotifications()
     }
     
-    
+    //Hides status bar for further cohesion in app.
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
     
     @IBAction func pickImageButtonPressed(sender: UIBarButtonItem) {
         let imagePicker = UIImagePickerController()
@@ -85,11 +103,17 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBAction func shareButtonPressed(sender: AnyObject) {
         let meme = generateMemedImage()
         let activityViewController = UIActivityViewController(activityItems: [meme], applicationActivities: nil)
+        
         self.presentViewController(activityViewController, animated: true, completion: nil)
         
-        
+        //Sets keyboardAlreadyShowing to false to ensure that the view stays in its apporpriate position. Loading another view can cause the keyboard to load impact the location of the view. 
+        keyboardAlreadyShowing = false
+        activityViewController.completionWithItemsHandler = {
+            (s: String?, ok: Bool, items: [AnyObject]?, err: NSError?) -> Void in
+            self.save()
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
-    
     
     
     
@@ -111,7 +135,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     func subscribeToKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
-        
     }
     
     func unsubscribeFromKeyboardNotifications() {
@@ -120,12 +143,18 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
     
     
+    
+    //keyboard only moves if the bottom text field is being edited and the keyboard is not already showing.
     func keyboardWillShow(notification: NSNotification) {
-        if keyboardAlreadyShowing != true {
-            view.frame.origin.y -= getKeyboardHeight(notification)
-            navigationToolbar.hidden = true
+        if bottomTextFieldEditing {
+            if keyboardAlreadyShowing != true {
+                view.frame.origin.y -= getKeyboardHeight(notification)
+                navigationToolbar.hidden = true
+                toolbar.hidden = true
+            }
+            keyboardAlreadyShowing = true
         }
-        keyboardAlreadyShowing = true
+        
     }
     
     
@@ -135,18 +164,24 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         return keyboardSize.CGRectValue().height
     }
     
+    //keyboard only hides if te bottomtextField is being edited and the keyboard is already hsowing.
     func keyboardWillHide(notification: NSNotification) {
-        if keyboardAlreadyShowing {
-            view.frame.origin.y += getKeyboardHeight(notification)
-            navigationToolbar.hidden = false
+        if bottomTextFieldEditing {
+            if keyboardAlreadyShowing {
+                view.frame.origin.y += getKeyboardHeight(notification)
+                navigationToolbar.hidden = false
+            }
+            keyboardAlreadyShowing = false
+            bottomTextFieldEditing = false
+            toolbar.hidden = false
         }
-        keyboardAlreadyShowing = false
+        
     }
     
     func generateMemedImage()->UIImage {
-        //TODO: Hide toolbar and navBar
+        //hide toolbar and navibar for screen capture.
         toolbar.hidden = true
-        //navigationToolbar.hidden = true
+        navigationToolbar.hidden = true
         
         
         //Render view to an Image
@@ -155,18 +190,19 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        //TODO: Show toolbar and navbar
+        //presents toolbar and navigation toolbar for further user interaction.
         toolbar.hidden = false
-        //navigationToolbar.hidden = false
+        navigationToolbar.hidden = false
         
         
         return memedImage
     }
     
-    func save() ->Meme {
+    
+    //setup the save function as instructed by the course.
+    func save() {
         let meme = Meme(topLabel: topTextField.text!, bottomLabel: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage())
         
-        return meme
     }
     
     
