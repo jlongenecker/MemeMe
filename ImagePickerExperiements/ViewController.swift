@@ -19,6 +19,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     @IBOutlet weak var toolbar: UIToolbar!
     @IBOutlet weak var navigationToolbar: UIToolbar!
+    @IBOutlet weak var shareButtonItem: UIBarButtonItem!
     
     let topFieldDelegate = memeTextFieldDelegate()
     let bottomFieldDelegate = memeTextFieldDelegate()
@@ -50,7 +51,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         
         topTextField.autocapitalizationType = UITextAutocapitalizationType.AllCharacters
         bottomTextField.autocapitalizationType = UITextAutocapitalizationType.AllCharacters
-        navigationToolbar.hidden = true
+        shareButtonItem.enabled = false
+
         
     }
     
@@ -59,6 +61,12 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBAction func bottomTextFieldBeganEditing(sender: UITextField) {
         bottomTextFieldEditing = true
     }
+    
+    
+    @IBAction func cancelButtonPressed(sender: AnyObject) {
+            self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     
     
     override func viewWillAppear(animated: Bool) {
@@ -117,7 +125,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imagePickerView.image = image
-            navigationToolbar.hidden = false
+            shareButtonItem.enabled = true
         }
         
         dismissViewControllerAnimated(true, completion: nil)
@@ -161,18 +169,16 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         return keyboardSize.CGRectValue().height
     }
     
-    //keyboard only hides if the bottomTextField is being edited and the keyboard is already hsowing.
+    //keyboard only hides if the bottomTextField is being edited and the keyboard is already showing.
     func keyboardWillHide(notification: NSNotification) {
         if bottomTextFieldEditing {
             if keyboardAlreadyShowing {
                 view.frame.origin.y += getKeyboardHeight(notification)
-                if navigationToolbar.hidden == false {
-                    navigationToolbar.hidden = false
-                }
             }
             keyboardAlreadyShowing = false
             bottomTextFieldEditing = false
             toolbar.hidden = false
+            navigationToolbar.hidden = false
         }
         
     }
