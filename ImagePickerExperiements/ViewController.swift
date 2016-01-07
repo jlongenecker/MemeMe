@@ -67,8 +67,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         
         //assigns the delegates to the previously set delegates. Each textfield needs to have its own delegate so that they act indepently.
-        self.topTextField.delegate = topFieldDelegate
-        self.bottomTextField.delegate = bottomFieldDelegate
+        topTextField.delegate = topFieldDelegate
+        bottomTextField.delegate = bottomFieldDelegate
         subscribeToKeyboardNotifications()
     }
     
@@ -86,8 +86,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        self.presentViewController(imagePicker, animated: true, completion: nil)
-        
+        presentViewController(imagePicker, animated: true, completion: nil)
     }
 
     @IBAction func pickImageFromCamera(sender: AnyObject) {
@@ -95,8 +94,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
-        self.presentViewController(imagePicker, animated: true, completion: nil)
-        
+        presentViewController(imagePicker, animated: true, completion: nil)
     }
     
     
@@ -104,7 +102,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         let meme = generateMemedImage()
         let activityViewController = UIActivityViewController(activityItems: [meme], applicationActivities: nil)
         
-        self.presentViewController(activityViewController, animated: true, completion: nil)
+        presentViewController(activityViewController, animated: true, completion: nil)
         
         //Sets keyboardAlreadyShowing to false to ensure that the view stays in its apporpriate position. Loading another view can cause the keyboard to load impact the location of the view. 
         keyboardAlreadyShowing = false
@@ -116,19 +114,18 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
     
     
-    
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imagePickerView.image = image
             navigationToolbar.hidden = false
         }
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     
@@ -164,12 +161,14 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         return keyboardSize.CGRectValue().height
     }
     
-    //keyboard only hides if te bottomtextField is being edited and the keyboard is already hsowing.
+    //keyboard only hides if the bottomTextField is being edited and the keyboard is already hsowing.
     func keyboardWillHide(notification: NSNotification) {
         if bottomTextFieldEditing {
             if keyboardAlreadyShowing {
                 view.frame.origin.y += getKeyboardHeight(notification)
-                navigationToolbar.hidden = false
+                if navigationToolbar.hidden == false {
+                    navigationToolbar.hidden = false
+                }
             }
             keyboardAlreadyShowing = false
             bottomTextFieldEditing = false
@@ -185,8 +184,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         
         
         //Render view to an Image
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.drawViewHierarchyInRect(view.frame, afterScreenUpdates: true)
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         

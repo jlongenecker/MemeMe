@@ -37,9 +37,9 @@
                                 </items>
                             </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YjA-Nq-c7g">
-                                <rect key="frame" x="145" y="478" width="314" height="40"/>
+                                <rect key="frame" x="145" y="478" width="314" height="53"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="WG5-sT-gfO"/>
+                                    <constraint firstAttribute="height" constant="53" id="WG5-sT-gfO"/>
                                     <constraint firstAttribute="width" constant="314" id="kcH-tO-OsL"/>
                                 </constraints>
                                 <attributedString key="attributedText">
@@ -69,9 +69,9 @@
                                 </items>
                             </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Flr-ZP-XU3">
-                                <rect key="frame" x="145" y="111" width="314" height="40"/>
+                                <rect key="frame" x="145" y="111" width="314" height="47"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="SSR-iq-Jev"/>
+                                    <constraint firstAttribute="height" constant="47" id="SSR-iq-Jev"/>
                                     <constraint firstAttribute="width" constant="314" id="WAm-T1-vrj"/>
                                 </constraints>
                                 <attributedString key="attributedText">
@@ -101,7 +101,7 @@
                             <constraint firstItem="YjA-Nq-c7g" firstAttribute="centerX" secondItem="bzb-f5-EHJ" secondAttribute="centerX" constant="2" id="pFq-l4-gSR"/>
                             <constraint firstItem="lvS-gQ-Zao" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="qyi-k1-nQL"/>
                             <constraint firstItem="lkG-Wh-BSO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="tYa-gZ-gaf"/>
-                            <constraint firstItem="bzb-f5-EHJ" firstAttribute="top" secondItem="Flr-ZP-XU3" secondAttribute="bottom" constant="-151" id="w9m-Q0-wf0"/>
+                            <constraint firstItem="bzb-f5-EHJ" firstAttribute="top" secondItem="Flr-ZP-XU3" secondAttribute="bottom" constant="-158" id="w9m-Q0-wf0"/>
                             <constraint firstItem="bzb-f5-EHJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="zF0-tn-fmE"/>
                         </constraints>
                     </view>
