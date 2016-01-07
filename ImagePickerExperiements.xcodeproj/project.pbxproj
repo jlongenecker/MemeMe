@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D57D544D1C20D01600394258 /* memeTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57D544C1C20D01600394258 /* memeTextFieldDelegate.swift */; };
+		D59EF9711C3EF3B100160BD7 /* MemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59EF9701C3EF3B100160BD7 /* MemeTableViewController.swift */; };
+		D59EF9731C3F012000160BD7 /* DetailMemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59EF9721C3F012000160BD7 /* DetailMemeViewController.swift */; };
 		D5CB2B651C1F892700636E81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CB2B641C1F892700636E81 /* AppDelegate.swift */; };
 		D5CB2B671C1F892700636E81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CB2B661C1F892700636E81 /* ViewController.swift */; };
 		D5CB2B6A1C1F892700636E81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5CB2B681C1F892700636E81 /* Main.storyboard */; };
@@ -37,6 +39,8 @@
 
 /* Begin PBXFileReference section */
 		D57D544C1C20D01600394258 /* memeTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = memeTextFieldDelegate.swift; sourceTree = "<group>"; };
+		D59EF9701C3EF3B100160BD7 /* MemeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeTableViewController.swift; sourceTree = "<group>"; };
+		D59EF9721C3F012000160BD7 /* DetailMemeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailMemeViewController.swift; sourceTree = "<group>"; };
 		D5CB2B611C1F892700636E81 /* ImagePickerExperiements.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImagePickerExperiements.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5CB2B641C1F892700636E81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5CB2B661C1F892700636E81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +90,24 @@
 			name = "TextField Delegate";
 			sourceTree = "<group>";
 		};
+		D59EF96E1C3EF35A00160BD7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D5EF82281C2A139700676C7D /* memeDataModel.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		D59EF96F1C3EF36B00160BD7 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D5CB2B661C1F892700636E81 /* ViewController.swift */,
+				D59EF9701C3EF3B100160BD7 /* MemeTableViewController.swift */,
+				D59EF9721C3F012000160BD7 /* DetailMemeViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
 		D5CB2B581C1F892700636E81 = {
 			isa = PBXGroup;
 			children = (
@@ -109,10 +131,10 @@
 		D5CB2B631C1F892700636E81 /* ImagePickerExperiements */ = {
 			isa = PBXGroup;
 			children = (
+				D59EF96F1C3EF36B00160BD7 /* View Controllers */,
+				D59EF96E1C3EF35A00160BD7 /* Model */,
 				D57D544B1C20D00600394258 /* TextField Delegate */,
 				D5CB2B641C1F892700636E81 /* AppDelegate.swift */,
-				D5CB2B661C1F892700636E81 /* ViewController.swift */,
-				D5EF82281C2A139700676C7D /* memeDataModel.swift */,
 				D5CB2B681C1F892700636E81 /* Main.storyboard */,
 				D5CB2B6B1C1F892700636E81 /* Assets.xcassets */,
 				D5CB2B6D1C1F892700636E81 /* LaunchScreen.storyboard */,
@@ -274,7 +296,9 @@
 				D5CB2B671C1F892700636E81 /* ViewController.swift in Sources */,
 				D5EF82291C2A139700676C7D /* memeDataModel.swift in Sources */,
 				D57D544D1C20D01600394258 /* memeTextFieldDelegate.swift in Sources */,
+				D59EF9711C3EF3B100160BD7 /* MemeTableViewController.swift in Sources */,
 				D5CB2B651C1F892700636E81 /* AppDelegate.swift in Sources */,
+				D59EF9731C3F012000160BD7 /* DetailMemeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

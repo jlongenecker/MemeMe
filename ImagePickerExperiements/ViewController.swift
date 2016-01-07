@@ -36,6 +36,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     //sets delegates, aligns and capitalizes all text in textFields, and hides navigation bar.
     override func viewDidLoad() {
+        print("Meme Editor View Controller")
         topTextField.defaultTextAttributes = memeTextAttributes
         bottomTextField.defaultTextAttributes = memeTextAttributes
         
@@ -208,6 +209,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     func save() {
         let meme = Meme(topLabel: topTextField.text!, bottomLabel: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage())
         
+        (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
     }
     
     
