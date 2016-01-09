@@ -21,6 +21,10 @@ class MemeTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBOutlet weak var memeImageView: UIImageView!
+    
+
+    @IBOutlet weak var memeLabel: UILabel!
     
 
 }
