@@ -33,6 +33,7 @@ class MemeTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath)
         
         let meme = memes[indexPath.row]
+        
         let cellLabel = meme.topLabel + "..." + meme.bottomLabel
         cell.textLabel?.text = cellLabel
         cell.imageView?.image = meme.memedImage
@@ -41,7 +42,6 @@ class MemeTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("Hello")
         let meme = memes[indexPath.row]
         let detailMemeViewController = self.storyboard?.instantiateViewControllerWithIdentifier("DetailMemeViewController") as! DetailMemeViewController
         

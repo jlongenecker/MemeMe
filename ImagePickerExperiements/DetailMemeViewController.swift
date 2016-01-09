@@ -14,10 +14,11 @@ class DetailMemeViewController: UIViewController {
     var image: UIImage?
     
     override func viewDidLoad() {
+        
+        //Detail Meme View Controller. Available after selecting from MemeCollectionView or MemeTableView
         super.viewDidLoad()
         self.memeImage?.image = image
 
-        // Do any additional setup after loading the view.
     }
 
 }
