@@ -29,8 +29,6 @@ class MemeTableViewController: UITableViewController {
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! MemeTableViewCell
-        
         
         let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! MemeTableViewCell
         let meme = memes[indexPath.row]
@@ -38,10 +36,6 @@ class MemeTableViewController: UITableViewController {
         let cellLabel = meme.topLabel + " " + meme.bottomLabel
         cell.memeImageView?.image = meme.memedImage
         cell.memeLabel?.text = cellLabel
-        
-
-//        cell.textLabel?.text = cellLabel
-//        cell.imageView?.image = meme.memedImage
         
         return cell
     }
@@ -55,4 +49,12 @@ class MemeTableViewController: UITableViewController {
         self.navigationController!.pushViewController(detailMemeViewController, animated: true)
     }
 
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            memes.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
+        
+    }
+    
 }
