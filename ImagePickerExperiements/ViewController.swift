@@ -36,7 +36,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     //sets delegates, aligns and capitalizes all text in textFields, and hides navigation bar.
     override func viewDidLoad() {
-        print("Meme Editor View Controller")
         topTextField.defaultTextAttributes = memeTextAttributes
         bottomTextField.defaultTextAttributes = memeTextAttributes
         
@@ -65,7 +64,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     
     @IBAction func cancelButtonPressed(sender: AnyObject) {
-            self.dismissViewControllerAnimated(true, completion: nil)
+            dismissViewControllerAnimated(true, completion: nil)
     }
     
     
@@ -117,7 +116,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         keyboardAlreadyShowing = false
         activityViewController.completionWithItemsHandler = {
             (s: String?, ok: Bool, items: [AnyObject]?, err: NSError?) -> Void in
-            self.save()
+            
+            if ok {
+               self.save()
+            }
             self.dismissViewControllerAnimated(true, completion: nil)
         }
     }

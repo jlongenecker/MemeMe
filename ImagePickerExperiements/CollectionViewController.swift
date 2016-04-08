@@ -43,11 +43,11 @@ class CollectionViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let meme = memes[indexPath.row]
         
-        let detailMemeViewController = self.storyboard?.instantiateViewControllerWithIdentifier("DetailMemeViewController") as! DetailMemeViewController
+        let detailMemeViewController = storyboard?.instantiateViewControllerWithIdentifier("DetailMemeViewController") as! DetailMemeViewController
         
         detailMemeViewController.image = meme.memedImage
         
-        self.navigationController!.pushViewController(detailMemeViewController, animated: true)
+        navigationController!.pushViewController(detailMemeViewController, animated: true)
     }
     
 

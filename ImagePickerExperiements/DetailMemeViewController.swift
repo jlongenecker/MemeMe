@@ -17,7 +17,7 @@ class DetailMemeViewController: UIViewController {
         
         //Detail Meme View Controller. Available after selecting from MemeCollectionView or MemeTableView
         super.viewDidLoad()
-        self.memeImage?.image = image
+        memeImage?.image = image
 
     }
 

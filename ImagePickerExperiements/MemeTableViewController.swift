@@ -16,7 +16,6 @@ class MemeTableViewController: UITableViewController {
 
 
     override func viewWillAppear(animated: Bool) {
-        print("MemeTableViewController")
         memes = (UIApplication.sharedApplication().delegate as! AppDelegate).memes
         tableView.reloadData()
     }
@@ -42,11 +41,11 @@ class MemeTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let meme = memes[indexPath.row]
-        let detailMemeViewController = self.storyboard?.instantiateViewControllerWithIdentifier("DetailMemeViewController") as! DetailMemeViewController
+        let detailMemeViewController = storyboard?.instantiateViewControllerWithIdentifier("DetailMemeViewController") as! DetailMemeViewController
         
         detailMemeViewController.image = meme.memedImage
         
-        self.navigationController!.pushViewController(detailMemeViewController, animated: true)
+        navigationController!.pushViewController(detailMemeViewController, animated: true)
     }
 
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
